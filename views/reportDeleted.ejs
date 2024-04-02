@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Deleted Record</h1>
+
+    <table>
+        <tr>
+            <th>Sl.no</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Subject Name</th>
+        </tr>
+        <% let counter = 1; %>
+        <% data.forEach(row => { %>
+            <% if (row.isDeleted === true) { %>
+                <tr>
+                    <td><%= counter; %></td>
+                    <td><%= row.name %></td>
+                    <td><%= row.age %></td>
+                    <td><%= row.subject.name %></td>
+                </tr>
+                <% counter ++; %>
+            <% } %>
+            
+        <% }) %>
+    </table>
+
+    <br><br>
+    <a href="/">Back</a>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Display Subject</h1>
+
+    <table>
+        <tr>
+            <th>Sl.no</th>
+            <th>Subject Name</th>
+        </tr>
+        <% let counter = 1; %>
+        <% data.forEach(row => { %>
+            <tr>
+                <td><%= counter %></td>
+                <td><%= row.name %></td>
+            </tr>
+            <% counter++; %>
+        <% }) %>
+    </table>
+
+    <br> <br>
+    <a href="/">Back</a>
+
+</body>
+</html>

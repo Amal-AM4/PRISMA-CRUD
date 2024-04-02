@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SubjectModel {
+  id        Int      @id @default(autoincrement())
+  sub_uuid  String   @default(uuid())
+  name      String   @unique
+  isDeleted Boolean  @default(false)
+  createAt  DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  subject StudentModel[] @relation("StudentSubject")
+
+  // set custosm table name
+  @@map(name: "tbl_subject")
+}
+
+model StudentModel {
+  id Int @id @default(autoincrement())
+  std_uuid String @unique @default(uuid())
+  name String
+  age Int
+  isDeleted Boolean  @default(false)
+  createAt  DateTime @default(now())
+  subject SubjectModel @relation("StudentSubject", fields: [subjectId], references: [id])
+  subjectId Int
+
+  @@map(name: "tbl_student")
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Display Student</h1>
+
+    <table>
+        <tr>
+            <th>Sl.no</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Subject Name</th>
+            <th>View</th>
+            <th>Remove</th>
+        </tr>
+        <% let counter = 1; %>
+        <% data.forEach(row => { %>
+            <% if (row.isDeleted === false) { %>
+                <tr>
+                    <td><%= counter; %></td>
+                    <td><%= row.name %></td>
+                    <td><%= row.age %></td>
+                    <td><%= row.subject.name %></td>
+                    <td><a href="/singleView/<%= row.std_uuid %>">View</a></td>
+                    <td><a href="/deleteStudent/<%= row.id %>">Delete</a></td>
+                </tr>
+                <% counter ++; %>
+            <% } %>
+            
+        <% }) %>
+    </table>
+
+    <br> <br>
+    <a href="/">Back</a>
+
+</body>
+</html>
